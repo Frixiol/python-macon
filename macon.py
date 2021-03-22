@@ -39,10 +39,12 @@ def calcul() :
     else:
         error()
     		
-    ouver(longP,largP,squareM)
+    nbTuile = (int(longP)/longT)*(int(largP)/largT)
+
+    ouver(longP,largP,squareM,nbTuile)
     #insérer votre code
     
-def ouver(longP,largP,squareM) :
+def ouver(longP,largP,squareM,nbTuile) :
   
     labelShowLong1 = Label(fen,text="Longueur:",bg='#D8D5E4')
     labelShowLong1.pack()
@@ -65,7 +67,12 @@ def ouver(longP,largP,squareM) :
     labelShowsquare2.pack()
     labelShowsquare2.place(relx=0.22, rely=0.6)
 	
-	
+    labelShowsquare1 = Label(fen,text="Tuiles:",bg='#D8D5E4')
+    labelShowsquare1.pack()
+    labelShowsquare1.place(relx=0.1, rely=0.65)	
+    labelShowsquare2 = Label(fen,text=nbTuile,bg='#D8D5E4')
+    labelShowsquare2.pack()
+    labelShowsquare2.place(relx=0.22, rely=0.65)
 	
     fen2=Tk() #création d’une fenêtre Tk
     fen2.title("affiche")
