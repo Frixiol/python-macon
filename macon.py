@@ -28,6 +28,7 @@ def calcul() :
     longP = inputlongP.get()
     largP = inputlargP.get()
     rad = var.get()
+    squareM = int(longP)*int(largP)
     if rad == 1:
         longT = largT = 0.2
     elif rad == 2:
@@ -37,11 +38,35 @@ def calcul() :
         largT = 0.4
     else:
         error()
-		
-    ouver()
+    		
+    ouver(longP,largP,squareM)
     #insérer votre code
     
-def ouver() :
+def ouver(longP,largP,squareM) :
+  
+    labelShowLong1 = Label(fen,text="Longueur:",bg='#D8D5E4')
+    labelShowLong1.pack()
+    labelShowLong1.place(relx=0.1, rely=0.5)	
+    labelShowLong2 = Label(fen,text=longP,bg='#D8D5E4')
+    labelShowLong2.pack()
+    labelShowLong2.place(relx=0.22, rely=0.5)
+	
+    labelShowLarg1 = Label(fen,text="largeur:",bg='#D8D5E4')
+    labelShowLarg1.pack()
+    labelShowLarg1.place(relx=0.1, rely=0.55)	
+    labelShowLarg2 = Label(fen,text=largP,bg='#D8D5E4')
+    labelShowLarg2.pack()
+    labelShowLarg2.place(relx=0.22, rely=0.55)
+	
+    labelShowsquare1 = Label(fen,text="m²:",bg='#D8D5E4')
+    labelShowsquare1.pack()
+    labelShowsquare1.place(relx=0.1, rely=0.6)	
+    labelShowsquare2 = Label(fen,text=squareM,bg='#D8D5E4')
+    labelShowsquare2.pack()
+    labelShowsquare2.place(relx=0.22, rely=0.6)
+	
+	
+	
     fen2=Tk() #création d’une fenêtre Tk
     fen2.title("affiche")
     fen2.geometry("1000x800")
@@ -79,7 +104,6 @@ inputlargP = Entry(fen)
 inputlargP.pack()
 inputlargP.place(relheight=0.06, relwidth=0.1,relx=0.2, rely=0.2)
 
-
 labeltxt1 = Label(fen,text="longueur:",bg='#D8D5E4')
 labeltxt1.pack()
 labeltxt1.place(relheight=0.06, relwidth=0.1,relx=0.09, rely=0.1)
@@ -88,8 +112,12 @@ labeltxt2 = Label(fen,text="largeur:",bg='#D8D5E4')
 labeltxt2.pack()
 labeltxt2.place(relheight=0.06, relwidth=0.1,relx=0.09, rely=0.2)
 
+
 boutonL = Button(fen,text = "Launch",command=calcul)
 boutonL.pack()
 boutonL.place(relheight=0.1, relwidth=0.2,relx=0.1, rely=0.3)
+
+canvas = Canvas(fen, height=5, background='white')
+canvas.place(relx=0.05, rely=0.45, relwidth=0.9)
 
 fen.mainloop() 
