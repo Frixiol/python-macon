@@ -1,130 +1,138 @@
-a="20x20"  
-b="30x30"       #cm
-c="20x40"
-d=6  #kg de colle  /m²   pour a 
-f=8  #idem               pour b et c 
-#x=input()  #type de carreaux 
-#z=input()  #taille du local  en m²
+a = "20x20"
+b = "30x30"  # cm
+c = "20x40"
+d = 6  # kg de colle  /m²   pour a
+f = 8  # idem               pour b et c
+# x=input()  #type de carreaux
+# z=input()  #taille du local  en m²
 
-#nbrcarreaux=(z/(x/10000))
+# nbrcarreaux=(z/(x/10000))
 
 
+from tkinter import *  # on importe tous la bibliothèque Tk
+import math
 
-from tkinter import * # on importe tous la bibliothèque Tk
-
-fen=Tk() #création d’une fenêtre Tk
+fen = Tk()  # création d’une fenêtre Tk
 fen.title("fenetre")
 fen.geometry("500x400")
 fen.configure(bg='#D8D5E4')
-#insérer les widgets et les appels de fonction
+
+
+# insérer les widgets et les appels de fonction
 
 def error():
-	labelEr = Label(fen,text="Error",bg='#D8D5E4')
-	labelEr.pack()
-	labelEr.place(relheight=0.2, relwidth=0.4,relx=0.2, rely=0.5)
+    labelEr = Label(fen, text="Error", bg='#D8D5E4')
+    labelEr.pack()
+    labelEr.place(relheight=0.2, relwidth=0.4, relx=0.2, rely=0.5)
 
-def calcul() :
-    
+
+def calcul():
     longP = inputlongP.get()
     largP = inputlargP.get()
     rad = var.get()
-    squareM = int(longP)*int(largP)
+    squareM = (int(longP) * int(largP))/10000
     if rad == 1:
-        longT = largT = 0.2
+        longT = largT = 20
     elif rad == 2:
-        longT = largT = 0.3 
+        longT = largT = 30
     elif rad == 3:
-        longT = 0.2
-        largT = 0.4
+        longT = 20
+        largT = 40
     else:
         error()
-    		
-    nbTuile = (int(longP)/longT)*(int(largP)/largT)
 
-    ouver(longP,largP,squareM,nbTuile)
-    #insérer votre code
+
+    nbTuilelong = math.ceil(int(longP)/longT)
+    nbTuilelarg = math.ceil(int(largP)/largT)
+    nbTuile = nbTuilelong*nbTuilelarg
     
-def ouver(longP,largP,squareM,nbTuile) :
-  
-    labelShowLong1 = Label(fen,text="Longueur:",bg='#D8D5E4')
+    print(nbTuile)
+    print(nbTuilelong)
+    print(longP)
+    print(longT)
+
+
+    ouver(longP, largP, squareM, nbTuile)
+    # insérer votre code
+
+
+def ouver(longP, largP, squareM, nbTuile):
+    labelShowLong1 = Label(fen, text="Longueur:", bg='#D8D5E4')
     labelShowLong1.pack()
-    labelShowLong1.place(relx=0.1, rely=0.5)	
-    labelShowLong2 = Label(fen,text=longP,bg='#D8D5E4')
+    labelShowLong1.place(relx=0.1, rely=0.5)
+    labelShowLong2 = Label(fen, text=longP, bg='#D8D5E4')
     labelShowLong2.pack()
     labelShowLong2.place(relx=0.22, rely=0.5)
-	
-    labelShowLarg1 = Label(fen,text="largeur:",bg='#D8D5E4')
+
+    labelShowLarg1 = Label(fen, text="largeur:", bg='#D8D5E4')
     labelShowLarg1.pack()
-    labelShowLarg1.place(relx=0.1, rely=0.55)	
-    labelShowLarg2 = Label(fen,text=largP,bg='#D8D5E4')
+    labelShowLarg1.place(relx=0.1, rely=0.55)
+    labelShowLarg2 = Label(fen, text=largP, bg='#D8D5E4')
     labelShowLarg2.pack()
     labelShowLarg2.place(relx=0.22, rely=0.55)
-	
-    labelShowsquare1 = Label(fen,text="m²:",bg='#D8D5E4')
+
+    labelShowsquare1 = Label(fen, text="m²:", bg='#D8D5E4')
     labelShowsquare1.pack()
-    labelShowsquare1.place(relx=0.1, rely=0.6)	
-    labelShowsquare2 = Label(fen,text=squareM,bg='#D8D5E4')
+    labelShowsquare1.place(relx=0.1, rely=0.6)
+    labelShowsquare2 = Label(fen, text=squareM, bg='#D8D5E4')
     labelShowsquare2.pack()
     labelShowsquare2.place(relx=0.22, rely=0.6)
-	
-    labelShowsquare1 = Label(fen,text="Tuiles:",bg='#D8D5E4')
+
+    labelShowsquare1 = Label(fen, text="Tuiles:", bg='#D8D5E4')
     labelShowsquare1.pack()
-    labelShowsquare1.place(relx=0.1, rely=0.65)	
-    labelShowsquare2 = Label(fen,text=nbTuile,bg='#D8D5E4')
+    labelShowsquare1.place(relx=0.1, rely=0.65)
+    labelShowsquare2 = Label(fen, text=nbTuile, bg='#D8D5E4')
     labelShowsquare2.pack()
     labelShowsquare2.place(relx=0.22, rely=0.65)
-	
-    fen2=Tk() #création d’une fenêtre Tk
+
+    fen2 = Tk()  # création d’une fenêtre Tk
     fen2.title("affiche")
     fen2.geometry("1000x800")
-    
-    
-  
+
     fen2.mainloop()
 
-#----programme principal----
 
-labeltxt = Label(fen,text="Tiles Size",bg='#D8D5E4')
+# ----programme principal----
+
+labeltxt = Label(fen, text="Tiles Size", bg='#D8D5E4')
 labeltxt.pack()
-labeltxt.place(relheight=0.1, relwidth=0.2,relx=0.68, rely=0.05)
+labeltxt.place(relheight=0.1, relwidth=0.2, relx=0.68, rely=0.05)
 
 var = IntVar()
 
-bouton1 = Radiobutton(fen,text = "20x20",variable=var, value=1,bg='#D8D5E4')
+bouton1 = Radiobutton(fen, text="20x20", variable=var, value=1, bg='#D8D5E4')
 bouton1.pack()
 bouton1.place(relx=0.7, rely=0.15)
 
-bouton2 = Radiobutton(fen,text = "30x30",variable=var, value=2,bg='#D8D5E4')
+bouton2 = Radiobutton(fen, text="30x30", variable=var, value=2, bg='#D8D5E4')
 bouton2.pack()
 bouton2.place(relx=0.7, rely=0.25)
 
-bouton3 = Radiobutton(fen,text = "20x40",variable=var, value=3,bg='#D8D5E4')
+bouton3 = Radiobutton(fen, text="20x40", variable=var, value=3, bg='#D8D5E4')
 bouton3.pack()
 bouton3.place(relx=0.7, rely=0.35)
 
-
 inputlongP = Entry(fen)
 inputlongP.pack()
-inputlongP.place(relheight=0.06, relwidth=0.1,relx=0.2, rely=0.1)
+inputlongP.place(relheight=0.06, relwidth=0.1, relx=0.2, rely=0.1)
 
 inputlargP = Entry(fen)
 inputlargP.pack()
-inputlargP.place(relheight=0.06, relwidth=0.1,relx=0.2, rely=0.2)
+inputlargP.place(relheight=0.06, relwidth=0.1, relx=0.2, rely=0.2)
 
-labeltxt1 = Label(fen,text="longueur:",bg='#D8D5E4')
+labeltxt1 = Label(fen, text="longueur:", bg='#D8D5E4')
 labeltxt1.pack()
-labeltxt1.place(relheight=0.06, relwidth=0.1,relx=0.09, rely=0.1)
+labeltxt1.place(relheight=0.06, relwidth=0.1, relx=0.09, rely=0.1)
 
-labeltxt2 = Label(fen,text="largeur:",bg='#D8D5E4')
+labeltxt2 = Label(fen, text="largeur:", bg='#D8D5E4')
 labeltxt2.pack()
-labeltxt2.place(relheight=0.06, relwidth=0.1,relx=0.09, rely=0.2)
+labeltxt2.place(relheight=0.06, relwidth=0.1, relx=0.09, rely=0.2)
 
-
-boutonL = Button(fen,text = "Launch",command=calcul)
+boutonL = Button(fen, text="Launch", command=calcul)
 boutonL.pack()
-boutonL.place(relheight=0.1, relwidth=0.2,relx=0.1, rely=0.3)
+boutonL.place(relheight=0.1, relwidth=0.2, relx=0.1, rely=0.3)
 
 canvas = Canvas(fen, height=5, background='white')
 canvas.place(relx=0.05, rely=0.45, relwidth=0.9)
 
-fen.mainloop() 
+fen.mainloop()
