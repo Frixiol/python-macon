@@ -33,30 +33,27 @@ def calcul():
     squareM = (int(longP) * int(largP))/10000
     if rad == 1:
         longT = largT = 20
+        colle = round(6 * squareM,1)
     elif rad == 2:
         longT = largT = 30
+        colle = round(8 * squareM,1)
     elif rad == 3:
         longT = 20
         largT = 40
+        colle = round(8 * squareM,1)
     else:
         error()
-
 
     nbTuilelong = math.ceil(int(longP)/longT)
     nbTuilelarg = math.ceil(int(largP)/largT)
     nbTuile = nbTuilelong*nbTuilelarg
-    
-    print(nbTuile)
-    print(nbTuilelong)
-    print(longP)
-    print(longT)
 
 
-    ouver(longP, largP, squareM, nbTuile)
+    ouver(longP, largP, squareM, nbTuile,colle)
     # insérer votre code
 
 
-def ouver(longP, largP, squareM, nbTuile):
+def ouver(longP, largP, squareM, nbTuile,colle):
     labelShowLong1 = Label(fen, text="Longueur:", bg='#D8D5E4')
     labelShowLong1.pack()
     labelShowLong1.place(relx=0.1, rely=0.5)
@@ -84,6 +81,13 @@ def ouver(longP, largP, squareM, nbTuile):
     labelShowsquare2 = Label(fen, text=nbTuile, bg='#D8D5E4')
     labelShowsquare2.pack()
     labelShowsquare2.place(relx=0.22, rely=0.65)
+
+    labelShowsquare1 = Label(fen, text="Kg de colle:", bg='#D8D5E4')
+    labelShowsquare1.pack()
+    labelShowsquare1.place(relx=0.1, rely=0.7)
+    labelShowsquare2 = Label(fen, text=colle, bg='#D8D5E4')
+    labelShowsquare2.pack()
+    labelShowsquare2.place(relx=0.23, rely=0.7)
 
     fen2 = Tk()  # création d’une fenêtre Tk
     fen2.title("affiche")
