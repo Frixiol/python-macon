@@ -46,14 +46,27 @@ def calcul():
 
     nbTuilelong = math.ceil(int(longP)/longT)
     nbTuilelarg = math.ceil(int(largP)/largT)
+
     nbTuile = nbTuilelong*nbTuilelarg
 
 
-    ouver(longP, largP, squareM, nbTuile,colle)
+    if int(longP) > int(largP):
+        canwidth = 500
+        canheight = canwidth/(int(longP)/int(largP))
+    elif int(longP) < int(largP):
+        canheight = 500
+        canwidth = canheight/(int(largP)/int(longP))
+    else:
+        canwidth=500
+        canheight=canwidth
+
+
+
+    ouver(longP, largP, squareM, nbTuile,colle,nbTuilelong,nbTuilelarg,canwidth,canheight)
     # insérer votre code
 
 
-def ouver(longP, largP, squareM, nbTuile,colle):
+def ouver(longP, largP, squareM, nbTuile,colle,nbTuilelong,nbTuilelarg,canwidth,canheight):
     labelShowLong1 = Label(fen, text="Longueur:", bg='#D8D5E4')
     labelShowLong1.pack()
     labelShowLong1.place(relx=0.1, rely=0.5)
@@ -91,7 +104,12 @@ def ouver(longP, largP, squareM, nbTuile,colle):
 
     fen2 = Tk()  # création d’une fenêtre Tk
     fen2.title("affiche")
-    fen2.geometry("1000x800")
+    fen2.geometry("600x600")
+
+    DrawCanvas = Canvas(fen2,width=canwidth,height=canheight,bg='grey',borderwidth=0)
+    DrawCanvas.place(x=50,y=50)
+
+
 
     fen2.mainloop()
 
